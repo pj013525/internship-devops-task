@@ -39,9 +39,9 @@ resource "aws_subnet" "public-subnet-1" {
 
 # Create EC2 instances
 resource "aws_instance" "my-instance" {
-  ami           = "ami-08a6efd148b1f7504"
+  ami           = "ami-0bd4cda58efa33d23"
   instance_type = "t2.large"
-  key_name      = "PJ-3-key"
+  key_name      = "default-key"
   count         = 2
   subnet_id     = aws_subnet.public-subnet-1.id
   associate_public_ip_address = true
