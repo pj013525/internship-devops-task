@@ -41,7 +41,7 @@ resource "aws_subnet" "public-subnet-1" {
 resource "aws_instance" "my-instance" {
   ami           = "ami-0bd4cda58efa33d23"
   instance_type = "t3.large"
-  key_name      = "default-key"
+  key_name      = "Internship_prgm"
   count         = 2
   subnet_id     = aws_subnet.public-subnet-1.id
   associate_public_ip_address = true
