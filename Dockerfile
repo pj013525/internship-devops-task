@@ -26,4 +26,4 @@ EXPOSE 3000
 USER root
 
 # start app (adjust if your app uses `npm start`)
-CMD ["node", "start"]
+CMD ["npm", "start"]
