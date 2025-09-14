@@ -23,7 +23,7 @@ COPY --from=build /app /app
 
 # expose and run as non-root
 EXPOSE 3000
-USER root
+USER appuser
 
 # start app (adjust if your app uses `npm start`)
 CMD ["npm", "start"]
