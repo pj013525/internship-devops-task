@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: PJ-deployment
+  labels:
+    app: pj-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pj-app
+  template:
+    metadata:
+      labels:
+        app: pj-app
+    spec:
+      containers:
+        - name: pj-container
+          image: pj013525/PJ-image:latest
+          ports:
+            - containerPort: 3000
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 15
+            periodSeconds: 20
