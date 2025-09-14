@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: PJ-deployment
+  name: pj-deployment
   labels:
     app: pj-app
 spec:
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: pj-container
-          image: pj013525/PJ-image:latest
+          image: pj013525/PJ-image:$IMAGE_VERSION
           ports:
             - containerPort: 3000
           readinessProbe:
