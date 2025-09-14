@@ -7,6 +7,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci --only=production
 
+# Copy the code
 COPY . .
 
 # run build/test if any
