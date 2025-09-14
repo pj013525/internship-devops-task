@@ -16,10 +16,11 @@ This is a **Node.js project** deployed on **Kubernetes (EKS)** with full CI/CD a
 | **Jenkins** | Continuous Integration / Continuous Deployment |
 | **Node.js & npm** | Backend runtime & package management |
 | **Docker** | Containerization & Image Build |
-| **Trivy** | Security scanning of filesystem and Docker images |
 | **Docker Hub** | Docker image repository |
 | **EKS (Elastic Kubernetes Service)** | Kubernetes Cluster for Deployment |
 | **CloudWatch** | Monitoring and Container Insights |
+
+<img width="2048" height="2048" alt="image" src="https://github.com/user-attachments/assets/ec7557af-8282-4b67-aaa1-db5083ed2d87" />
 
 ---
 
@@ -73,9 +74,11 @@ npm install
 npm start
 Open browser at:
 
-pgsql
 Copy code
 http://<server-public-ip>:3000
+
+<img width="1185" height="676" alt="chrome_NVpZ7l9sok" src="https://github.com/user-attachments/assets/75a632ce-4283-48c9-85b5-eab74c7f00a8" />
+
 Step 3: Main Deployment Environment Setup
 Create IAM Role with following policies:
 
@@ -176,6 +179,7 @@ bash
 Copy code
 kubectl apply -f deployment.yaml -n pj-namespace
 kubectl apply -f service.yaml -n pj-namespace
+
 Step 7: Jenkins CI/CD Setup (Server-2)
 Install:
 
@@ -206,6 +210,8 @@ Build & tag Docker image
 Push image to Docker Hub
 
 Deploy to EKS
+
+<img width="1366" height="616" alt="chrome_5EQEB8PXyg" src="https://github.com/user-attachments/assets/42d8c8bb-08ca-4452-ad7b-c06172b71062" />
 
 Step 8: GitHub Webhook Setup
 Go to GitHub Repo → Settings → Webhooks → Add webhook
@@ -287,6 +293,7 @@ Step 10: Access Application
 After deployment, get LoadBalancer URL from kubectl get svc -n pj-namespace
 
 Open in browser to verify.
+<img width="952" height="679" alt="chrome_AIb6RqJhGV" src="https://github.com/user-attachments/assets/7612062a-2426-47d4-9774-02e43e4137ed" />
 
 Notes
 Metrics and logs in CloudWatch may take 2–5 minutes to appear.
