@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: pj-container
-          image: pj013525/PJ-image:$IMAGE_VERSION
+          image: pj013525/PJ-image:latest
           ports:
             - containerPort: 3000
           readinessProbe:
