@@ -26,4 +26,4 @@ EXPOSE 3000
 USER appuser
 
 # start app (adjust if your app uses `npm start`)
-CMD ["node", "index.js"]
+CMD ["node", "start"]
