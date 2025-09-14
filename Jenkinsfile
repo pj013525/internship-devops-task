@@ -5,7 +5,7 @@ pipeline {
         nodejs 'node-24'
     }
     environment {
-        K8S_SERVER_URL = "https://FF8AC49860B492AF4D366142903F87D9.yl4.ap-south-2.eks.amazonaws.com"
+        K8S_SERVER_URL = "https://05162D13BF1282DCFB2FAA4E06C03A48.gr7.ap-south-2.eks.amazonaws.com"
         IMAGE_VERSION = "${BUILD_NUMBER}"
     }
     stages {
@@ -58,7 +58,7 @@ pipeline {
         }
         stage('Deploy in the K8S') {
             steps {
-                withKubeConfig(caCertificate: '', clusterName: 'pj', contextName: '', credentialsId: 'K8S-creds', namespace: 'pj-namespace', restrictKubeConfigAccess: false, serverUrl: "${K8S_SERVER_URL}") {
+                withKubeConfig(caCertificate: '', clusterName: 'devops-cluster', contextName: '', credentialsId: 'K8S-creds', namespace: 'pj-namespace', restrictKubeConfigAccess: false, serverUrl: "${K8S_SERVER_URL}") {
                     sh "cat deployment.yaml | envsubst | kubectl apply -n pj-namespace -f -"
                     sh "kubectl apply -f service.yaml -n pj-namespace"
                 }
@@ -66,7 +66,7 @@ pipeline {
         }
         stage('Verify the Deployment') {
             steps {
-                withKubeConfig(caCertificate: '', clusterName: 'pj', contextName: '', credentialsId: 'K8S-creds', namespace: 'pj-namespace', restrictKubeConfigAccess: false, serverUrl: "${K8S_SERVER_URL}") {
+                withKubeConfig(caCertificate: '', clusterName: 'devops-cluster', contextName: '', credentialsId: 'K8S-creds', namespace: 'pj-namespace', restrictKubeConfigAccess: false, serverUrl: "${K8S_SERVER_URL}") {
                     sleep 30
                     sh "kubectl get pods -n pj-namespace"
                     sh "kubectl get svc -n pj-namespace"
@@ -75,4 +75,3 @@ pipeline {
         }
     }
 }
-
